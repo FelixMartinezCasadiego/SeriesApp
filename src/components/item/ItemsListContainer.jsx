@@ -8,8 +8,6 @@ import Pagination from '../pagination/Pagination';
 export const ItemsListContainer = ({paginationPages}) => {
 
   const [series, setSeries] = useState([]);
-  
-  const defaultPage = 1;
 
   useEffect(() => {
     
@@ -25,6 +23,8 @@ export const ItemsListContainer = ({paginationPages}) => {
 
   }, [paginationPages]); 
 
+  console.log(series.total_pages)
+
   return (
     <>
       <div className='container-fluid'>
@@ -38,7 +38,7 @@ export const ItemsListContainer = ({paginationPages}) => {
         </div>
         
         <div className='d-flex justify-content-center my-5'>
-          <Pagination paginationPages={paginationPages ? paginationPages : defaultPage} />
+          <Pagination paginationPages={paginationPages ? paginationPages : 1} />
         </div>
         
 

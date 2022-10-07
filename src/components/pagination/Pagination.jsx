@@ -3,16 +3,6 @@ import { Link } from 'react-router-dom';
 
 const Pagination = ({paginationPages}) => {
 
-/*     const nextHandler = () => {
-        setPages( pages + 1 ) 
-    };
-
-    const prevHandler = () =>{
-        if(pages > 1){
-            setPages( (prev) => prev - 1 )
-        } else {null}
-    } */
-
     let pages = parseInt(paginationPages);
 
     return (
