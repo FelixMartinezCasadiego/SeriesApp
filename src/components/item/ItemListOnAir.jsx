@@ -20,7 +20,7 @@ const ItemListOnAir = () => {
         
         <div className='container-fluid'>
 
-            <h2 className='fw-bolder mx-5'>Top Rated Series</h2>
+            <h2 className='fw-bolder mx-5'>Tv Airing Today</h2>
 
             <div className='row col-12 m-0 d-flex justify-content-center'>
                 {

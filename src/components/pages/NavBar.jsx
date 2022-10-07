@@ -28,7 +28,7 @@ const NavBar = () => {
                     <ul >
                         <li><Link to={'/'}>Popular</Link></li>
                         <li><Link to={'/topRated'} >Top Rated</Link></li>
-                        <li ><Link to={'/onAir'} >TV on the air</Link></li>
+                        <li ><Link to={'/onAir'} >TV Airing Today</Link></li>
                     </ul>
                 </nav>
 
