@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+
+/* itemList Css */
+@import './item/itemList.css';
+
+/* navBar Css */
+@import './navBar/navBar.css';
+
+/* item Css */
+@import './item/item.css';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family:sans-serif;
+    text-decoration: none;
+    list-style-type: none;
+    outline: none;
+    background-color: #cacedd;
+    font-family: 'Poppins', sans-serif;
+}
+

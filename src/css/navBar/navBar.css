@@ -1,0 +1,89 @@
+.formSearch{
+    position: relative ;
+}
+
+.formSearch input{
+    width: 300px;
+    height: 55px;
+    padding: 0 70px;
+    font-size: 18px;
+    color: black;
+    outline: none;
+    border: 1px solid silver;
+    border-radius: 5px;
+    box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 21%);
+}
+
+.btnSearch{
+    position: absolute;
+    top: 0px;
+    left: 28px;
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    z-index: 3;
+    cursor: pointer;
+}
+
+.navBar{
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: #ffff;
+    box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 21%);
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    list-style: none;
+    margin-right: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    position: relative;
+}
+
+nav ul li a::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    height: 3px;
+    width: 0;
+    transform: translateX(-50%);
+    background-color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+nav ul li a:hover::before{
+    width: 100%;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .navBar{
+        background-color: #FAFAFA;
+        display: grid;
+        justify-content: center;
+        justify-items: center;
+    }
+
+    .formSearch input{
+        width: auto;
+        font-size: 16px;
+        color: black;
+        outline: none;
+        border: 1px solid silver;
+        border-radius: 5px;
+        box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 21%);
+    }
+}
