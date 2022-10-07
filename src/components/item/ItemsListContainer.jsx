@@ -11,17 +11,17 @@ export const ItemsListContainer = ({paginationPages}) => {
 
   useEffect(() => {
     
-    paginationPages ?
-
+    if(paginationPages !== null && paginationPages !== ''){
       Pages(paginationPages)
         .then((resp) => setSeries(resp))
         .catch((error) => {throw new Error(error)})
-            
-      : retriveAllPopularSeries()
+    } else {
+        retriveAllPopularSeries()
           .then((resp) => setSeries(resp))
-          .catch((error) => {throw new Error(error)});
+          .catch((error) => {throw new Error(error)})
+    };
 
-  }, [paginationPages]);
+  }, [paginationPages]); 
 
   return (
     <>
