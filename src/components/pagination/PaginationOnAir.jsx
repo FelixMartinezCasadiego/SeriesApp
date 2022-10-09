@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Pagination = ({paginationPages}) => {
+const PaginationOnAir = ({paginationPages}) => {
 
     let pages = parseInt(paginationPages);
 
@@ -11,13 +11,13 @@ const Pagination = ({paginationPages}) => {
         <nav aria-label="Page navigation example">
             <ul className="pagination">
                 <li className="page-item">
-                    <Link className="page-link" to={`/pages/${pages > 1 ? pages - 1 : pages = 1}`} aria-label="Previous"> 
+                    <Link className="page-link" to={`/pagesOnAir/${pages > 1 ? pages - 1 : pages = 1}`} aria-label="Previous"> 
                         <span aria-hidden="true"> &laquo; </span>
                     </Link>
                 </li>
-                <li className="page-item"><Link to={`/pages/${paginationPages}`} className="page-link" > {paginationPages} </Link></li>
+                <li className="page-item"><Link to={`/pagesOnAir/${paginationPages}`} className="page-link" > {paginationPages} </Link></li>
                 <li className="page-item">
-                    {paginationPages ? <Link className="page-link" aria-label="Next" to={`/pages/${pages !== 500 ? pages + 1 : pages = 500}`}>
+                    {paginationPages ? <Link className="page-link" aria-label="Next" to={`/pagesOnAir/${pages !== 500 ? pages + 1 : pages = 500}`}>
                         <span aria-hidden="true">&raquo;</span>
                     </Link> : ''}
                 </li>
@@ -28,4 +28,4 @@ const Pagination = ({paginationPages}) => {
     )
 }
 
-export default Pagination
+export default PaginationOnAir;

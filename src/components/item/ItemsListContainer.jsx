@@ -23,8 +23,6 @@ export const ItemsListContainer = ({paginationPages}) => {
 
   }, [paginationPages]); 
 
-  console.log(series.total_pages)
-
   return (
     <>
       <div className='container-fluid'>

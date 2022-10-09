@@ -23,7 +23,7 @@ const PaginationPages = () => {
             <ItemsListContainer paginationPages={pagination} />
 
         </>
-    )
+    ) 
 }
 
 export default PaginationPages

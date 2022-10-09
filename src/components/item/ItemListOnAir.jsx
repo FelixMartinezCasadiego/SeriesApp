@@ -1,17 +1,26 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { retriveAllOnAir } from '../../api/main';
+import { pagesAiringToday, retriveAllOnAir } from '../../api/main';
+import PaginationOnAir from '../pagination/PaginationOnAir';
 import { ItemList } from './ItemList';
 
-const ItemListOnAir = () => {
+const ItemListOnAir = ({pagination}) => {
 
     const [onAir, setOnAir] = useState([]);
+
     useEffect(() => {
-        retriveAllOnAir()
-            .then((resp) => setOnAir(resp))
-            .catch((err) => {throw new Error(err)})
-    }, []);
+        if(pagination !== null && pagination !== ''){
+            pagesAiringToday(pagination)
+                .then((resp) => setOnAir(resp))
+                .catch((err) => {throw new Error(err)})
+        } else {
+            retriveAllOnAir()
+                .then((resp) => setOnAir(resp))
+                .catch((err) => {throw new Error(err)})
+        }
+        
+    }, [pagination]);
     
 
     return (
@@ -28,9 +37,9 @@ const ItemListOnAir = () => {
                 }
             </div>
 
-{/*             <div className='d-flex justify-content-center my-5'>
-                <Pagination />
-            </div> */}
+            <div className='d-flex justify-content-center my-5'>
+                <PaginationOnAir paginationPages={ pagination ? pagination : 1} />
+            </div>
 
         </div>
         
@@ -39,4 +48,4 @@ const ItemListOnAir = () => {
     )
 }
 
-export default ItemListOnAir
+export default ItemListOnAir;
