@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { retriveSerieByName } from '../../api/main';
+import { retriveSerieById } from '../../api/main';
 import Item from './Item';
 
 export const ItemContainer = () => {
@@ -16,7 +16,7 @@ export const ItemContainer = () => {
   useEffect(() => {
     
     if(serieByName !== null){
-      retriveSerieByName(serieByName)
+      retriveSerieById(serieByName)
         .then((resp) => setsSerieDetails(resp))
         .catch((error) => {throw new Error(error)});
     }

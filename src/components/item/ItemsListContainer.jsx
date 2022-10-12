@@ -1,27 +1,40 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Pages, retriveAllPopularSeries } from '../../api/main';
+import { retriveSeries, searchSeries } from '../../api/main';
 import {ItemList} from './ItemList';
 import '../../css/item/itemList.css'
 import Pagination from '../pagination/Pagination';
+import { useParams, useSearchParams } from 'react-router-dom';
 
-export const ItemsListContainer = ({paginationPages}) => {
+export const ItemsListContainer = () => {
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const q = searchParams.get('q');
+  const page = searchParams.get('page');
+
+  const params = useParams();
+  const categorySeries = params.categorySeries;
 
   const [series, setSeries] = useState([]);
 
   useEffect(() => {
     
-    if(paginationPages !== null && paginationPages !== ''){
-      Pages(paginationPages)
-        .then((resp) => setSeries(resp))
+    let currentPage = page ? page : 1;
+    let currentCategory = categorySeries ? categorySeries : 'popular';
+
+    if(q){
+      searchSeries(page, q)
+        .then((resp) => setSeries(resp.data))
         .catch((error) => {throw new Error(error)})
-    } else {
-        retriveAllPopularSeries()
+    } else if (currentCategory){
+        retriveSeries(currentCategory, currentPage)
           .then((resp) => setSeries(resp))
           .catch((error) => {throw new Error(error)})
-    };
-
-  }, [paginationPages]); 
+    }
+    
+    console.log(series)
+  }, [q, page, categorySeries]); 
 
   return (
     <>
@@ -36,7 +49,7 @@ export const ItemsListContainer = ({paginationPages}) => {
         </div>
         
         <div className='d-flex justify-content-center my-5'>
-          <Pagination paginationPages={paginationPages ? paginationPages : 1} />
+          <Pagination page={page ? page : 1} setSearchParams={setSearchParams} searchParams={searchParams} />
         </div>
         
 

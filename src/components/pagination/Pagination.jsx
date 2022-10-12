@@ -1,9 +1,19 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Pagination = ({paginationPages}) => {
+const Pagination = ({page, setSearchParams, searchParams}) => {
 
-    let pages = parseInt(paginationPages);
+    const increment = () => {
+        let updatedSearchParams = new URLSearchParams(searchParams.toString());
+        updatedSearchParams.set('page', parseInt(page) + 1);
+        setSearchParams(updatedSearchParams.toString());
+    }
+
+    const decrement = () => {
+        let updatedSearchParams = new URLSearchParams(searchParams.toString());
+        updatedSearchParams.set('page', parseInt(page) - 1);
+        setSearchParams(updatedSearchParams.toString());
+    }
+
 
     return (
         <>
@@ -11,15 +21,15 @@ const Pagination = ({paginationPages}) => {
         <nav aria-label="Page navigation example">
             <ul className="pagination">
                 <li className="page-item">
-                    <Link className="page-link" to={`/pages/${pages > 1 ? pages - 1 : pages = 1}`} aria-label="Previous"> 
+                    <button className="page-link" aria-label="Previous" onClick={decrement}> 
                         <span aria-hidden="true"> &laquo; </span>
-                    </Link>
+                    </button>
                 </li>
-                <li className="page-item"><Link to={`/pages/${paginationPages}`} className="page-link" > {paginationPages} </Link></li>
+                <li className="page-item"><button className="page-link"> {page} </button></li>
                 <li className="page-item">
-                    {paginationPages ? <Link className="page-link" aria-label="Next" to={`/pages/${pages !== 500 ? pages + 1 : pages = 500}`}>
-                        <span aria-hidden="true">&raquo;</span>
-                    </Link> : ''}
+                    {page ? <button className="page-link" aria-label="Next" onClick={increment}>
+                        <span aria-hidden="true" >&raquo;</span>
+                    </button> : ''}
                 </li>
             </ul>
         </nav>
