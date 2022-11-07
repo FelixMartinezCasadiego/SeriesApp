@@ -18,13 +18,21 @@ export const ItemsListContainer = () => {
 
   const [series, setSeries] = useState([]);
 
+  let titleCategory = () => {
+    if(categorySeries === undefined) {
+      return "Popular"
+    } else if (categorySeries === "top_rated") {
+      return "Top Rated"
+    } else {return "TV Airing Today"}
+  }
+
   useEffect(() => {
     
     let currentPage = page ? page : 1;
     let currentCategory = categorySeries ? categorySeries : 'popular';
 
     if(q){
-      searchSeries(page, q)
+      searchSeries(currentPage, q)
         .then((resp) => setSeries(resp.data))
         .catch((error) => {throw new Error(error)})
     } else if (currentCategory){
@@ -33,14 +41,13 @@ export const ItemsListContainer = () => {
           .catch((error) => {throw new Error(error)})
     }
     
-    console.log(series)
   }, [q, page, categorySeries]); 
 
   return (
     <>
       <div className='container-fluid'>
 
-        <h2 className='fw-bolder mx-5'>Popular Series</h2>
+        <h2 className='fw-bolder mx-5'> {titleCategory()} </h2>
  
         <div className='row col-12 m-0 d-flex justify-content-center'>
           {
@@ -49,7 +56,7 @@ export const ItemsListContainer = () => {
         </div>
         
         <div className='d-flex justify-content-center my-5'>
-          <Pagination page={page ? page : 1} setSearchParams={setSearchParams} searchParams={searchParams} />
+          <Pagination page={page ? page : 1} setSearchParams={setSearchParams} searchParams={searchParams} series={series} />
         </div>
         
 

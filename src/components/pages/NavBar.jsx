@@ -11,7 +11,7 @@ const NavBar = () => {
         e.preventDefault();
         if(searchSerie.trim().length <= 1) return;
 
-        navigate(`/?q=${searchSerie.toLowerCase()}`)
+        navigate(`?q=${searchSerie.toLowerCase()}`)
     };
 
     const onInputChange = (e) => {

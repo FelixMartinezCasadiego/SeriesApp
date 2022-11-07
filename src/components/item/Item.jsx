@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Item = ({serieDetails}) => {
 
@@ -11,12 +11,14 @@ const Item = ({serieDetails}) => {
 
   const country = serieDetails.origin_country ? serieDetails.origin_country[0] : null;
 
+  const navigate = useNavigate()
+
   return (
     <>
 
-      <Link className='' to={'/'}>
-        <button type="button" className="btn btn-light btn-lg">Back</button>
-      </Link>
+      <div>
+        <button type="button" className="btn btn-light btn-lg" onClick={() => navigate(-1)}>Back</button>
+      </div>
 
       <div className='d-flex justify-content-center'>
       
